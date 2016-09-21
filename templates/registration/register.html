@@ -1,0 +1,37 @@
+{% extends 'app.html' %}
+{% load i18n %}
+{% block content %}
+    <div id="auth-form">
+        <form action="{% url 'register' %}" method="post" novalidate>
+            <div class="form-group">
+                <label for="">Username</label>
+                <input type="text" name="username" value="{{ form.username.value |default_if_none:'' }}" class="form-control">
+                {{ form.username.errors}}
+            </div>
+            <div class="form-group">
+                <label for="">Email</label>
+                <input type="email" value="{{ form.email.value |default_if_none:'' }}" name="email" class="form-control">
+                {{ form.email.errors}}
+            </div>
+            <div class="form-group">
+                <label for="">Phone</label>
+                <input type="text" name="phone" value="{{ form.phone.value |default_if_none:'' }}" class="form-control">
+                {{ form.phone.errors}}
+            </div>
+            <div class="form-group">
+                <label for="">Paswword</label>
+                <input type="password" name="password" class="form-control">
+                {{ form.password.errors }}
+            </div>
+            <div class="form-group">
+                <label for="">Confirm Paswword</label>
+                <input type="password" name="password_confirmation" class="form-control">
+            </div>
+            {% csrf_token %}
+            <button type="submit" class="btn btn-success">Register</button>
+        </form>
+    </div>
+    <div class="trans-block">
+    {% trans "Hello World" %}
+    </div>
+{% endblock %}

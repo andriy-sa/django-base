@@ -1,0 +1,15 @@
+{% extends 'app.html' %}
+
+{% block content %}
+    <div id="article-item">
+        <div class="field-title">
+            <b>{{ article.title }}</b>
+        </div>
+        <div class="field-body">
+            {{ article.body |safe }}
+        </div>
+        <div class="field-date">
+            {{ article.created_at | date:'Y-m-d H:i:s'}}
+        </div>
+    </div>
+{% endblock %}

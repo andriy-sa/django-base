@@ -1,0 +1,16 @@
+{% extends 'app.html' %}
+
+{% block content %}
+    <div class="articles">
+        {% for item in articles %}
+        <div class="item">
+            <div class="field-title">
+                <a href="{% url 'article_page' item.id %}">{{ item.title }}</a>
+            </div>
+            <div class="field-body">
+                {{  item.body |safe  }}
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+{% endblock %}
