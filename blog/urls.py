@@ -22,5 +22,6 @@ urlpatterns = [
     url(r'^blog/(?P<id>[0-9]+)/$',views.article,name='article_page'),
     url(r'^blog/$', views.articles_list, name='blog'),
     url('^', include('users.urls')),
+    url('^', include('persons.urls')),
 ]
 

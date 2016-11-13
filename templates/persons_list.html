@@ -1,0 +1,33 @@
+{% extends 'app.html' %}
+{% load static %}
+
+{% block content %}
+    <div id="persons-list-app" ng-app="app" ng-controller="PersonsListCtrl" ng-cloak>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr dir-paginate="person in persons | itemsPerPage: pageSize" total-items="totalPersons"
+                current-page="currentPage">
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="pagination-block ">
+            <dir-pagination-controls on-page-change="getgetPersons(currentPage) " boundary-links="true "
+                                     template-url="{% static 'templates/dir-pagination.tpl.html' %}">
+            </dir-pagination-controls>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'js/app.js' %}"></script>
+{% endblock %}
