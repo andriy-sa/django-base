@@ -8,5 +8,6 @@ from . import views
 
 urlpatterns = [
     url(r'^persons/$', views.Persons.persons_list, name='persons_list_index'),
-    url(r'^api/search_persons/$', views.Persons.json_search)
+    url(r'^api/search_persons/$', views.Persons.json_search),
+    url(r'^api/search_persons_eloquent/$', views.Persons.json_search_eloquesnt)
 ]

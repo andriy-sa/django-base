@@ -11,6 +11,22 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
+from orator import DatabaseManager, Model
+
+#eloquent db setting
+config = {
+    'mysql': {
+        'driver': 'mysql',
+        'host': 'localhost',
+        'database': 'django_blog',
+        'user': 'root',
+        'password': '1',
+        'prefix': ''
+    }
+}
+
+db = DatabaseManager(config)
+Model.set_connection_resolver(db)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
