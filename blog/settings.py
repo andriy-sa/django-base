@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'persons',
     'django_markdown',
     'ckeditor',
+    'debug_toolbar',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -53,6 +54,7 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'blog.urls'
@@ -156,3 +158,4 @@ FACEBOOK_APP_SECRET='195ea4ea8c3fe1152b67636a08b7ac28'
 LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'locale'),
 )
+INTERNAL_IPS = ('174.121.34.187','127.0.0.1',)
