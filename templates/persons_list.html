@@ -3,25 +3,50 @@
 
 {% block content %}
     <div id="persons-list-app" ng-app="app" ng-controller="PersonsListCtrl" ng-cloak>
+        <div class="form-group col-sm-3">
+            <input
+            class="form-control"
+            placeholder="Search"
+            ng-model="q"
+            ng-change="getPersons(1)"
+            ng-model-options='{ debounce: 300 }'
+        />
+        </div>
         <table class="table table-hover">
             <thead>
             <tr>
                 <th>#</th>
                 <th>First Name</th>
                 <th>Last Name</th>
+                <th>Address</th>
+                <th>Phone</th>
+                <th style="cursor: pointer" ng-click="ChangeSort('created_at')">
+                    Date
+                    <span ng-class="(sort == 'created_at' && !reverse) ? 'fa-caret-up' : (sort == 'created_at') ? 'fa-caret-down' : ''" class="fa"></span>
+                </th>
+                <th style="cursor: pointer" ng-click="ChangeSort('comments__count')">
+                    Comments count
+                    <span ng-class="(sort == 'comments__count' && !reverse) ? 'fa-caret-up' : (sort == 'comments__count') ? 'fa-caret-down' : ''" class="fa"></span>
+                </th>
+                <th>Last comment</th>
             </tr>
             </thead>
             <tbody>
             <tr dir-paginate="person in persons | itemsPerPage: pageSize" total-items="totalPersons"
                 current-page="currentPage">
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
+                <th scope="row"><% person.id %></th>
+                <td><% person.first_name %></td>
+                <td><% person.last_name %></td>
+                <td><% person.address %></td>
+                <td><% person.phone %></td>
+                <td><% person.created_at %></td>
+                <td><% person.comments_count %></td>
+                <td><% person.last_comment.message %></td>
             </tr>
             </tbody>
         </table>
         <div class="pagination-block ">
-            <dir-pagination-controls on-page-change="getgetPersons(currentPage) " boundary-links="true "
+            <dir-pagination-controls on-page-change="getPersons(currentPage) " boundary-links="true "
                                      template-url="{% static 'templates/dir-pagination.tpl.html' %}">
             </dir-pagination-controls>
         </div>

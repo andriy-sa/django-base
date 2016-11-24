@@ -32,13 +32,25 @@ app.controller('PersonsListCtrl', ['$scope','$http', 'Person', function ($scope,
     $scope.reverse = false;
 
     $scope.getPersons = function (page) {
-        Person.getList($scope.q,page,$scope.pageSize,$scope.sort,$scope.reverse)
+        var rev = $scope.reverse ? 'ASC' : 'DESC';
+        Person.getList($scope.q,page,$scope.pageSize,$scope.sort, rev)
             .success(function (response) {
-               console.log(response)
+                $scope.totalPersons = response.count;
+                $scope.persons = response.data;
             })
             .error(function (errors) {
                // console.log(errors);
             });
+    };
+
+    $scope.ChangeSort = function(column) {
+        if (column === $scope.sort) {
+            $scope.reverse = !$scope.reverse;
+        } else {
+            $scope.sort = column;
+            $scope.reverse = false;
+        }
+        $scope.getPersons($scope.currentPage);
     };
 
     $scope.getPersons($scope.currentPage);
