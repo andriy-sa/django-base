@@ -39,8 +39,8 @@
                 <td><% person.last_name %></td>
                 <td><% person.address %></td>
                 <td><% person.phone %></td>
-                <td><% person.created_at %></td>
-                <td><% person.comments_count %></td>
+                <td><% person.created_at | date:'yyyy-MM-dd HH:mm:ss' %></td>
+                <td><% person.comments__count %></td>
                 <td><% person.last_comment.message %></td>
             </tr>
             </tbody>

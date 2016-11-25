@@ -8,7 +8,7 @@ def serialize(data):
             'last_name': item.last_name,
             'phone': item.phone,
             'address': item.address,
-            'comments_count': item.comments__count,
+            'comments__count': item.comments__count,
             'created_at' : item.created_at
         }
         last_comment = item.comments.first()

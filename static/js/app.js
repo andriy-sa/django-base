@@ -10,7 +10,7 @@ app.factory('Person', ['$http', function ($http) {
         getList: function (q, page, limit, sort, reverse) {
             return $http({
                 method: 'GET',
-                url: '/api/search_persons',
+                url: '/api/search_persons_eloquent',
                 params: {
                     "q": q,
                     "page": page,
